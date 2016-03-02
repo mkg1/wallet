@@ -1,0 +1,9 @@
+<h1>Dashboard</h1>
+<p>Your account balance is: $<%=@balance%></p>
+<%if @balance < 0 %>
+<p>GET TO WORK! YOU'RE BROKE!</p>
+<%else%>
+<p>Keep up the positive lifestyle!</p>
+<%end%>
+
+<p>You've made <%=@transactions%> transactions since the beginning of time.</p> 
