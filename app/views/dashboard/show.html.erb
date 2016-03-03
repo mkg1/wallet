@@ -1,18 +1,17 @@
 <h1>Dashboard</h1>
 <p>Your account balance is: $<%=@transactions.balance%></p>
 <%if @transactions.balance < 0 %>
-<p>GET TO WORK! YOU'RE BROKE!</p>
+<p>GET A JOB! YOU'RE BROKE!</p>
 <%else%>
 <p>Keep up the positive lifestyle!</p>
 <%end%>
 
 
 <p>You've made <%=@transactions.count%> transactions since the beginning of time.</p>
-<p>Total spent this month (<%=(Time.now).strftime("%B")%>):</p>
-<p>Total spent last month (<%=(Time.now - 1.month).strftime("%B")%>):</p>
-<p>Total transactions this month (<%=(Time.now).strftime("%B")%>):</p>
-<p>Total transactions last month (<%=(Time.now - 1.month).strftime("%B")%>):</p>
-<p>Biggest purchase/expense this month (<%=(Time.now).strftime("%B")%>):</p>
-<p>Biggest purchase/expense EVER:</p>
+<p>Total spent this month (<%=(Time.now).strftime("%B")%>): <%t = @transactions.current_month.sum(:amount)%> <%=number_to_currency(t)%></p>
+<p>Total spent last month (<%=(Time.now - 1.month).strftime("%B")%>): <% t = @transactions.previous_month.sum(:amount)%> <%=number_to_currency(t)%></p>
+<p>Total transactions this month (<%=(Time.now).strftime("%B")%>): <%=@transactions.current_month.count%></p>
+<p>Total transactions last month (<%=(Time.now - 1.month).strftime("%B")%>): <%=@transactions.previous_month.count%></p>
+<p>Biggest purchase/expense this month (<%=(Time.now).strftime("%B")%>): <% t = @transactions.current_month.maximum(:amount)%> <%=number_to_currency(t)%></p>
+<p>Biggest purchase/expense EVER: <% t = @transactions.maximum(:amount)%> <%=number_to_currency(t)%></p>
 <p>Business that owns you:</p>
-<%=@transactions.current_month.each%>
