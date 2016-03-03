@@ -8,10 +8,9 @@
 
 
 <p>You've made <%=@transactions.count%> transactions since the beginning of time.</p>
-<p>Total spent this month (<%=(Time.now).strftime("%B")%>): <%t = @transactions.current_month.sum(:amount)%> <%=number_to_currency(t)%></p>
-<p>Total spent last month (<%=(Time.now - 1.month).strftime("%B")%>): <% t = @transactions.previous_month.sum(:amount)%> <%=number_to_currency(t)%></p>
+<p>Total spent this month (<%=(Time.now).strftime("%B")%>): <%t = @transactions.current_month_total%> <%=number_to_currency(t)%></p>
+<p>Total spent last month (<%=(Time.now - 1.month).strftime("%B")%>): <% t = @transactions.previous_month_total%> <%=number_to_currency(t)%></p>
 <p>Total transactions this month (<%=(Time.now).strftime("%B")%>): <%=@transactions.current_month.count%></p>
 <p>Total transactions last month (<%=(Time.now - 1.month).strftime("%B")%>): <%=@transactions.previous_month.count%></p>
-<p>Biggest purchase/expense this month (<%=(Time.now).strftime("%B")%>): <% t = @transactions.current_month.maximum(:amount)%> <%=number_to_currency(t)%></p>
-<p>Biggest purchase/expense EVER: <% t = @transactions.maximum(:amount)%> <%=number_to_currency(t)%></p>
-<p>Where you've spent the most money over time:</p>
+<p>Biggest purchase/expense this month (<%=(Time.now).strftime("%B")%>): <% t = @transactions.biggest_monthly_expense%> <%=number_to_currency(t)%></p>
+<p>Biggest purchase/expense EVER: <% t = @transactions.biggest_expense_ever%> <%=number_to_currency(t)%></p>

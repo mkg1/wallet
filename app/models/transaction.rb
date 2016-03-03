@@ -11,7 +11,19 @@ class Transaction < ActiveRecord::Base
     self.count
   end
 
-  # def self.current_month_transactions
-  #
-  # end
+  def self.current_month_total
+    self.current_month.sum(:amount)
+  end
+
+  def self.previous_month_total
+    self.previous_month.sum(:amount)
+  end
+
+  def self.biggest_monthly_expense
+    self.current_month.maximum(:amount)
+  end
+
+  def self.biggest_expense_ever
+    self.maximum(:amount)
+  end
 end
