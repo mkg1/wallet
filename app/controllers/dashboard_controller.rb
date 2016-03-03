@@ -1,6 +1,10 @@
 class DashboardController < ApplicationController
   def show
-    @balance = Transaction.balance
-    @transactions = Transaction.total_transactions
+    @transactions = Transaction
+
+    # @balance = Transaction.balance
+    # @transactions = Transaction.total_transactions
+    # # @current_month_transactions = Transaction.current_month.count
+    # @tranceaction = Transaction
   end
 end
