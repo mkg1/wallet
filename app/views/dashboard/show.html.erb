@@ -1,18 +1,61 @@
-<h1>Dashboard</h1>
-<p>Your account balance is: $<%=@transactions.balance%></p>
+<html>
+<body id="body">
+<div id="one"><h1></br>Dashboard</h1></div>
+<div id="two"><p id="three">Your account balance is: <span id="money"><%=number_to_currency(@transactions.balance)%></span></p></div>
 <%if @transactions.balance < 0 %>
-<p>GET A JOB! YOU'RE BROKE!</p>
+<p id="loud">GET A JOB! YOU'RE BROKE!</p>
 <%else%>
-<p>Keep up the positive lifestyle!</p>
+<p id="encouraging">Keep making that $$!</p>
 <%end%>
 
+<div id="links"><p><em><u>Links</u></em></p>
+  <p>Click <%= link_to 'here', transactions_path %> to view your transactions.</p>
+<p>Click <%= link_to 'here', new_transaction_path %> to enter a new transaction.</p>
+</div>
 
-<p>You've made <%=@transactions.count%> transactions since the beginning of time.</p>
+<table>
+  <head>
+    <tr>
+      <td colspan="2" align="center"><b>Overview of Transactions</b></td>
+    </tr>
+    <tr>
+      <td>Transactions since the beginning of time:</td>
+      <td align="right" width="200px"><%=@transactions.count%></td>
+    </tr>
+    <tr>
+      <td>Total spent this month (<%=(Time.now).strftime("%B")%>)</td>
+      <td align="right"><%t = @transactions.current_month_total%> <%=number_to_currency(t)%></td>
+    </tr>
+    <tr>
+      <td>Total spent last month (<%=(Time.now - 1.month).strftime("%B")%>)</td>
+      <td align="right"><% t = @transactions.previous_month_total%> <%=number_to_currency(t)%></td>
+    </tr>
+    <tr>
+      <td>Total transactions this month (<%=(Time.now).strftime("%B")%>)</td>
+      <td align="right"><%=@transactions.current_month.count%></td>
+    </tr>
+    <tr>
+      <td>Total transactions last month (<%=(Time.now - 1.month).strftime("%B")%>)</td>
+      <td align="right"><%=@transactions.previous_month.count%></td>
+    </tr>
+    <tr>
+      <td>Biggest purchase/expense this month (<%=(Time.now).strftime("%B")%>)</td>
+      <td align="right"><% t = @transactions.biggest_monthly_expense%> <%=number_to_currency(t)%></td>
+    </tr>
+    <tr>
+      <td>Biggest purchase/expense EVER</td>
+      <td align="right"><% t = @transactions.biggest_expense_ever%> <%=number_to_currency(t)%></td>
+    </tr>
+  </head>
+</table>
+
+<!-- <p>You've made <%=@transactions.count%> transactions since the beginning of time.</p>
 <p>Total spent this month (<%=(Time.now).strftime("%B")%>): <%t = @transactions.current_month_total%> <%=number_to_currency(t)%></p>
-<p>Total spent last month (<%=(Time.now - 1.month).strftime("%B")%>): <% t = @transactions.previous_month_total%> <%=number_to_currency(t)%></p>
-<p>Total transactions this month (<%=(Time.now).strftime("%B")%>): <%=@transactions.current_month.count%></p>
-<p>Total transactions last month (<%=(Time.now - 1.month).strftime("%B")%>): <%=@transactions.previous_month.count%></p>
-<p>Biggest purchase/expense this month (<%=(Time.now).strftime("%B")%>): <% t = @transactions.biggest_monthly_expense%> <%=number_to_currency(t)%></p>
-<p>Biggest purchase/expense EVER: <% t = @transactions.biggest_expense_ever%> <%=number_to_currency(t)%></p>
+<p>Total spent last month (<%=(Time.now - 1.month).strftime("%B")%>): <% t = @transactions.previous_month_total%> <%=number_to_currency(t)%></p> -->
+<!-- <p>Total transactions this month (<%=(Time.now).strftime("%B")%>): <%=@transactions.current_month.count%></p> -->
+<!-- <p>Total transactions last month (<%=(Time.now - 1.month).strftime("%B")%>): <%=@transactions.previous_month.count%></p> -->
+<!-- <p>Biggest purchase/expense this month (<%=(Time.now).strftime("%B")%>): <% t = @transactions.biggest_monthly_expense%> <%=number_to_currency(t)%></p> -->
+<!-- <p>Biggest purchase/expense EVER: <% t = @transactions.biggest_expense_ever%> <%=number_to_currency(t)%></p> -->
 
-<p>Click <%= link_to 'here', transactions_path %> to view your transactions.</p>
+</body>
+</html>

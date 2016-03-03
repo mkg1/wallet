@@ -1,3 +1,59 @@
 // Place all the styles related to the Dashboard controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#body {
+  background-color: lightgrey;
+  padding: 0px;
+}
+
+#one {
+  background-color: beige;
+  height: 75px;
+  border-top: 0px;
+}
+
+h1 {
+  font-family: fantasy;
+  text-align: center;
+  font-size: 40px;
+  margin: 0px;
+  padding: 20px;
+}
+
+#two {
+  background-color: thistle;
+  width: 350px;
+  height: 50px;
+  position: relative;
+  text-align: center;
+}
+
+#money {
+  font-style: italic;
+}
+
+#three {
+  vertical-align: middle;
+  font-size: 20px;
+  padding-top: 15px;
+}
+
+#loud {
+  font-size: 50px;
+  color: red;
+}
+
+#encouraging {
+  font-size: 50px;
+  color: hotpink;
+}
+
+#links {
+  float: right;
+  margin-right: 50px;
+  position: relative;
+  background-color: lightsteelblue;
+  height: 125px;
+  width: 375px;
+  text-align: center;
+}
