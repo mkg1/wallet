@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'dashboard/show'
   root 'dashboard#show'
   get 'dashboard' => 'dashboard#show'
+  get 'transactions/index' => 'transactions#index'
   resources :transactions
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

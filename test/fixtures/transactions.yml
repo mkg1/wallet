@@ -6,8 +6,8 @@ one:
 
 
 two:
-  description: MyText
-  amount: 10
+  description: MyText2
+  amount: 20
 
 three:
   description: MoreText
