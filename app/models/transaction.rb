@@ -26,4 +26,8 @@ class Transaction < ActiveRecord::Base
   def self.biggest_expense_ever
     self.maximum(:amount)
   end
+
+  def self.main_vendor
+    self.select('sum(amount) as total_spent').group('description').order('total_spent DESC').limit(1)
+  end
 end

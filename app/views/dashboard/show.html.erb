@@ -14,3 +14,5 @@
 <p>Total transactions last month (<%=(Time.now - 1.month).strftime("%B")%>): <%=@transactions.previous_month.count%></p>
 <p>Biggest purchase/expense this month (<%=(Time.now).strftime("%B")%>): <% t = @transactions.biggest_monthly_expense%> <%=number_to_currency(t)%></p>
 <p>Biggest purchase/expense EVER: <% t = @transactions.biggest_expense_ever%> <%=number_to_currency(t)%></p>
+
+<p>Click <%= link_to 'here', transactions_path %> to view your transactions.</p>
