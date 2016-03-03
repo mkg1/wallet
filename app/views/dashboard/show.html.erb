@@ -14,4 +14,4 @@
 <p>Total transactions last month (<%=(Time.now - 1.month).strftime("%B")%>): <%=@transactions.previous_month.count%></p>
 <p>Biggest purchase/expense this month (<%=(Time.now).strftime("%B")%>): <% t = @transactions.current_month.maximum(:amount)%> <%=number_to_currency(t)%></p>
 <p>Biggest purchase/expense EVER: <% t = @transactions.maximum(:amount)%> <%=number_to_currency(t)%></p>
-<p>Business that owns you:</p>
+<p>Where you've spent the most money over time:</p>
